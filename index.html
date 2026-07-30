@@ -4,21 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RemoteX Hero Section</title>
+  <!-- Import Google Fonts Modern -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  
   <style>
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
     }
 
     body {
       background-color: transparent;
       color: #37352f;
-      padding: 10px;
+      padding: 8px;
     }
 
-    /* Container Utama Grid 2 Kolom */
+    /* Grid Layout 2 Kolom */
     .hero-container {
       display: grid;
       grid-template-columns: 1fr;
@@ -27,58 +32,70 @@
       margin: 0 auto;
     }
 
-    @media (min-width: 640px) {
+    @media (min-width: 680px) {
       .hero-container {
-        grid-template-columns: 320px 1fr;
+        grid-template-columns: 290px 1fr;
       }
     }
 
-    /* Card Styling */
+    /* Base Card Styling */
     .card {
       background: #ffffff;
-      border: 1px solid #e9e9e8;
-      border-radius: 12px;
-      padding: 20px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+      border: 1px solid #eeeeed;
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.025);
     }
 
-    /* Widget Jam / Salam */
+    /* Widget Jam / Greeting Card */
     .time-card {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
-      background: #fafafa;
+      background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+      border: 1px solid #e2e8f0;
     }
 
     .greeting {
-      font-size: 1.1rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      margin-bottom: 2px;
+      color: #64748b;
+      text-transform: lowercase;
+    }
+
+    .user-name {
+      font-size: 1.3rem;
       font-weight: 700;
-      letter-spacing: 1px;
-      margin-bottom: 8px;
-      color: #111111;
-      text-transform: uppercase;
+      color: #0f172a;
+      margin-bottom: 12px;
+      letter-spacing: -0.3px;
     }
 
     .date {
-      font-size: 0.85rem;
-      color: #666666;
-      font-family: monospace;
-      margin-bottom: 6px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #94a3b8;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
     }
 
     .clock {
-      font-size: 1.4rem;
+      font-family: 'Space Grotesk', monospace;
+      font-size: 1.55rem;
       font-weight: 700;
-      font-family: monospace;
       color: #0f172a;
-      background: #e2e8f0;
-      padding: 6px 14px;
-      border-radius: 6px;
+      background: #f1f5f9;
+      padding: 8px 16px;
+      border-radius: 10px;
+      border: 1px solid #e2e8f0;
+      letter-spacing: 1px;
     }
 
-    /* Card Welcome Text */
+    /* Welcome Message Card */
     .welcome-card {
       display: flex;
       flex-direction: column;
@@ -86,38 +103,40 @@
     }
 
     .welcome-text {
-      font-size: 0.95rem;
-      line-height: 1.6;
-      color: #37352f;
+      font-size: 0.93rem;
+      line-height: 1.65;
+      color: #334155;
     }
 
     .welcome-text p {
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .welcome-text p:last-child {
       margin-bottom: 0;
     }
 
-    .bold-text {
-      font-weight: 600;
+    .highlight-brand {
+      color: #0f172a;
+      font-weight: 700;
     }
   </style>
 </head>
 <body>
 
   <div class="hero-container">
-    <!-- Kolom Kiri: Widget Jam -->
+    <!-- Kolom Kiri: Widget Jam Aesthetic -->
     <div class="card time-card">
-      <div class="greeting" id="greeting">SELAMAT PAGI</div>
-      <div class="date" id="date">JUMAT, JULI 31 2026</div>
-      <div class="clock" id="clock">06 : 15 : 00 AM</div>
+      <div class="greeting" id="greeting">good morning,</div>
+      <div class="user-name">Kiki 👋</div>
+      <div class="date" id="date">JUMAT, 31 JULI 2026</div>
+      <div class="clock" id="clock">06 : 20 : 00 AM</div>
     </div>
 
     <!-- Kolom Kanan: Message Asli Kamu -->
     <div class="card welcome-card">
       <div class="welcome-text">
-        <p>Halo dan selamat datang di <b>RemoteX</b>.</p>
+        <p>Halo dan selamat datang di <span class="highlight-brand">RemoteX</span>.</p>
         <p>Pertama-tama, selamat karena kamu sudah mengambil langkah yang mungkin akan mengubah arah kariermu.</p>
         <p>Banyak orang berpikir bahwa untuk bekerja secara remote atau mendapatkan klien global, mereka harus belajar skill baru dari nol.</p>
         <p>Kami percaya sebaliknya.</p>
@@ -133,27 +152,25 @@
     function updateClock() {
       const now = new Date();
       
-      // Update Jam
       let hours = now.getHours();
       const minutes = String(now.getMinutes()).padStart(2, '0');
       const seconds = String(now.getSeconds()).padStart(2, '0');
       const ampm = hours >= 12 ? 'PM' : 'AM';
       
-      // Update Salam berdasarkan Waktu
-      let greetingText = 'GOOD MORNING';
-      if (hours >= 11 && hours < 15) greetingText = 'GOOD AFTERNOON';
-      else if (hours >= 15 && hours < 18) greetingText = 'GOOD AFTERNOON';
-      else if (hours >= 18 || hours < 4) greetingText = 'GOOD NIGHT';
+      // Dynamic Greeting berdasarkan Waktu
+      let greetingText = 'good morning,';
+      if (hours >= 12 && hours < 17) greetingText = 'good afternoon,';
+      else if (hours >= 17 && hours < 21) greetingText = 'good evening,';
+      else if (hours >= 21 || hours < 4) greetingText = 'good night,';
 
       hours = hours % 12;
-      hours = hours ? hours : 12; // Format 12 Jam
+      hours = hours ? hours : 12;
       const hoursStr = String(hours).padStart(2, '0');
 
       document.getElementById('greeting').textContent = greetingText;
       document.getElementById('clock').textContent = `${hoursStr} : ${minutes} : ${seconds} ${ampm}`;
 
-      // Update Tanggal
-      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+      const options = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
       const dateStr = now.toLocaleDateString('id-ID', options).toUpperCase();
       document.getElementById('date').textContent = dateStr;
     }

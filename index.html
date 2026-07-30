@@ -69,7 +69,7 @@
     }
 
     .clock {
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       font-weight: 700;
       font-family: monospace;
       color: #0f172a;
@@ -85,27 +85,22 @@
       justify-content: center;
     }
 
-    .welcome-title {
-      font-size: 1.15rem;
-      font-weight: 600;
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
     .welcome-text {
-      font-size: 0.92rem;
+      font-size: 0.95rem;
       line-height: 1.6;
-      color: #4b5563;
+      color: #37352f;
     }
 
-    .highlight {
-      color: #0f172a;
+    .welcome-text p {
+      margin-bottom: 12px;
+    }
+
+    .welcome-text p:last-child {
+      margin-bottom: 0;
+    }
+
+    .bold-text {
       font-weight: 600;
-      background: #f1f5f9;
-      padding: 2px 6px;
-      border-radius: 4px;
     }
   </style>
 </head>
@@ -119,12 +114,18 @@
       <div class="clock" id="clock">06 : 15 : 00 AM</div>
     </div>
 
-    <!-- Kolom Kanan: Welcome Note -->
+    <!-- Kolom Kanan: Message Asli Kamu -->
     <div class="card welcome-card">
-      <div class="welcome-title">👋 Welcome to RemoteX!</div>
-      <p class="welcome-text">
-        Selamat sudah mengambil langkah besar untuk mengarahkan ulang kariermu. Kamu tidak perlu belajar <i>skill</i> dari nol—pengalaman dan cara berpikirmu sudah sangat berharga. <span class="highlight">Yang kamu butuhkan adalah strategi mengubahnya menjadi peluang global.</span>
-      </p>
+      <div class="welcome-text">
+        <p>Halo dan selamat datang di <b>RemoteX</b>.</p>
+        <p>Pertama-tama, selamat karena kamu sudah mengambil langkah yang mungkin akan mengubah arah kariermu.</p>
+        <p>Banyak orang berpikir bahwa untuk bekerja secara remote atau mendapatkan klien global, mereka harus belajar skill baru dari nol.</p>
+        <p>Kami percaya sebaliknya.</p>
+        <p>Kami percaya bahwa <b>kamu sudah memiliki sesuatu yang berharga.</b></p>
+        <p>Pengalamanmu.<br>Skill-mu.<br>Cara berpikirmu.<br>Cara menyelesaikan masalah.<br>Semuanya memiliki nilai.</p>
+        <p>Yang belum kamu miliki hanyalah strategi untuk mengubahnya menjadi peluang global.</p>
+        <p><b>Itulah alasan RemoteX hadir.</b></p>
+      </div>
     </div>
   </div>
 
@@ -139,10 +140,10 @@
       const ampm = hours >= 12 ? 'PM' : 'AM';
       
       // Update Salam berdasarkan Waktu
-      let greetingText = 'SELAMAT PAGI';
-      if (hours >= 11 && hours < 15) greetingText = 'SELAMAT SIANG';
-      else if (hours >= 15 && hours < 18) greetingText = 'SELAMAT SORE';
-      else if (hours >= 18 || hours < 4) greetingText = 'SELAMAT MALAM';
+      let greetingText = 'GOOD MORNING';
+      if (hours >= 11 && hours < 15) greetingText = 'GOOD AFTERNOON';
+      else if (hours >= 15 && hours < 18) greetingText = 'GOOD AFTERNOON';
+      else if (hours >= 18 || hours < 4) greetingText = 'GOOD NIGHT';
 
       hours = hours % 12;
       hours = hours ? hours : 12; // Format 12 Jam
@@ -151,7 +152,7 @@
       document.getElementById('greeting').textContent = greetingText;
       document.getElementById('clock').textContent = `${hoursStr} : ${minutes} : ${seconds} ${ampm}`;
 
-      // Update Tanggal (Bahasa Indonesia)
+      // Update Tanggal
       const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
       const dateStr = now.toLocaleDateString('id-ID', options).toUpperCase();
       document.getElementById('date').textContent = dateStr;

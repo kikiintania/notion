@@ -22,14 +22,14 @@
       padding: 8px;
     }
 
-    /* Container Main Grid 2 Kolom (Kanan-Kiri) */
+    /* Container Main Grid 2 Kolom */
     .grid-container {
       max-width: 1000px;
       margin: 0 auto;
       display: grid;
       grid-template-columns: 1fr;
       gap: 16px;
-      align-items: stretch; /* Memastikan tinggi kolom kiri & kanan sama persis */
+      align-items: start; /* Mengembalikan ke natural height */
     }
 
     @media (min-width: 768px) {
@@ -41,21 +41,7 @@
     .column {
       display: flex;
       flex-direction: column;
-      gap: 14px;
-    }
-
-    /* Biar card kiri otomatis memanjang sampai bawah */
-    .column-left .accordion {
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .column-left .accordion-content {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      gap: 16px;
     }
 
     /* Accordion Card Styling */
@@ -110,7 +96,7 @@
       border-top-color: #f1f5f9;
     }
 
-    /* Inner Styling */
+    /* Inner Content Styling */
     .text-muted {
       font-size: 0.92rem;
       color: #37352f;
@@ -126,14 +112,14 @@
       font-size: 1.05rem;
       font-weight: 700;
       color: #0f172a;
-      margin: 12px 0;
+      margin: 10px 0 12px 0;
     }
 
     .feature-grid {
       display: grid;
       grid-template-columns: 1fr;
       gap: 10px;
-      margin: 12px 0;
+      margin: 10px 0 12px 0;
     }
 
     @media (min-width: 480px) {
@@ -192,8 +178,8 @@
 
   <div class="grid-container">
     
-    <!-- KOLOM KIRI (OTOMATIS TINGGI 100%) -->
-    <div class="column column-left">
+    <!-- KOLOM KIRI -->
+    <div class="column">
       <!-- Item 1: Filosofi RemoteX -->
       <div class="accordion active">
         <div class="accordion-header">
@@ -201,30 +187,28 @@
           <span class="accordion-icon">▼</span>
         </div>
         <div class="accordion-content">
-          <div>
-            <p class="text-muted">Kami memiliki satu keyakinan sederhana:</p>
-            <div class="quote-box">"Everyone has an X."</div>
-            <p class="text-muted">X adalah kombinasi unik dari:</p>
-            
-            <div class="feature-grid">
-              <div class="feature-list">
-                <ul>
-                  <li>✨ Pengalaman</li>
-                  <li>✨ Skill</li>
-                  <li>✨ Pengetahuan</li>
-                </ul>
-              </div>
-              <div class="feature-list">
-                <ul>
-                  <li>✨ Cara berpikir</li>
-                  <li>✨ Problem solving</li>
-                  <li>✨ Kepribadian</li>
-                </ul>
-              </div>
+          <p class="text-muted">Kami memiliki satu keyakinan sederhana:</p>
+          <div class="quote-box">"Everyone has an X."</div>
+          <p class="text-muted">X adalah kombinasi unik dari:</p>
+          
+          <div class="feature-grid">
+            <div class="feature-list">
+              <ul>
+                <li>✨ Pengalaman</li>
+                <li>✨ Skill</li>
+                <li>✨ Pengetahuan</li>
+              </ul>
+            </div>
+            <div class="feature-list">
+              <ul>
+                <li>✨ Cara berpikir</li>
+                <li>✨ Problem solving</li>
+                <li>✨ Kepribadian</li>
+              </ul>
             </div>
           </div>
 
-          <p class="text-muted" style="margin-top: 14px;">
+          <p class="text-muted" style="margin-bottom: 0;">
             RemoteX membantu kamu menemukan X tersebut. Karena ketika kamu memahami nilai yang kamu miliki... <b>Dunia juga akan mulai melihatnya.</b>
           </p>
         </div>
@@ -274,13 +258,6 @@
   </div>
 
   <script>
-    function updateHeights() {
-      document.querySelectorAll('.accordion.active').forEach(acc => {
-        const content = acc.querySelector('.accordion-content');
-        content.style.maxHeight = 'none';
-      });
-    }
-
     document.querySelectorAll('.accordion-header').forEach(header => {
       header.addEventListener('click', () => {
         const accordion = header.parentElement;
@@ -296,8 +273,11 @@
       });
     });
 
-    // Run height adjustment on load
-    window.addEventListener('load', updateHeights);
+    // Auto set height pas di-load
+    document.querySelectorAll('.accordion.active').forEach(acc => {
+      const content = acc.querySelector('.accordion-content');
+      content.style.maxHeight = content.scrollHeight + 'px';
+    });
   </script>
 </body>
 </html>

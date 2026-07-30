@@ -29,12 +29,12 @@
       display: grid;
       grid-template-columns: 1fr;
       gap: 16px;
-      align-items: start;
+      align-items: stretch; /* Memastikan tinggi kolom kiri & kanan sama persis */
     }
 
     @media (min-width: 768px) {
       .grid-container {
-        grid-template-columns: 1fr 1fr; /* Membagi 2 Kolom Sejajar */
+        grid-template-columns: 1fr 1fr;
       }
     }
 
@@ -42,6 +42,20 @@
       display: flex;
       flex-direction: column;
       gap: 14px;
+    }
+
+    /* Biar card kiri otomatis memanjang sampai bawah */
+    .column-left .accordion {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .column-left .accordion-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     /* Accordion Card Styling */
@@ -98,35 +112,48 @@
 
     /* Inner Styling */
     .text-muted {
-      font-size: 0.88rem;
-      color: #475569;
-      line-height: 1.55;
+      font-size: 0.92rem;
+      color: #37352f;
+      line-height: 1.6;
+      margin-bottom: 8px;
     }
 
     .quote-box {
       background: #f8fafc;
       border-left: 4px solid #0f172a;
-      padding: 10px 14px;
+      padding: 12px 16px;
       border-radius: 0 8px 8px 0;
-      font-size: 1rem;
+      font-size: 1.05rem;
       font-weight: 700;
       color: #0f172a;
-      margin: 10px 0;
+      margin: 12px 0;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin: 12px 0;
+    }
+
+    @media (min-width: 480px) {
+      .feature-grid {
+        grid-template-columns: 1fr 1fr;
+      }
     }
 
     .feature-list {
       background: #fafafa;
       border: 1px solid #f1f5f9;
       border-radius: 8px;
-      padding: 10px 14px;
-      margin: 10px 0;
+      padding: 12px 14px;
     }
 
     .feature-list ul { list-style: none; }
     .feature-list li {
-      font-size: 0.86rem;
+      font-size: 0.88rem;
       color: #334155;
-      margin-bottom: 5px;
+      margin-bottom: 6px;
     }
     .feature-list li:last-child { margin-bottom: 0; }
 
@@ -146,34 +173,27 @@
       margin-bottom: 6px;
     }
 
-    .step-list {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin-top: 10px;
+    /* Flow Step Cara Belajar */
+    .flow-step {
+      font-size: 0.92rem;
+      font-style: italic;
+      color: #37352f;
+      margin: 4px 0;
     }
 
-    .step-card {
-      background: #f8fafc;
-      border: 1px solid #e2e8f0;
-      border-radius: 8px;
-      padding: 10px 12px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
+    .flow-arrow {
+      font-size: 0.9rem;
+      color: #37352f;
+      margin: 2px 0 2px 4px;
     }
-
-    .step-icon { font-size: 1.2rem; }
-    .step-title { font-size: 0.88rem; font-weight: 700; color: #0f172a; }
-    .step-desc { font-size: 0.8rem; color: #64748b; }
   </style>
 </head>
 <body>
 
   <div class="grid-container">
     
-    <!-- KOLOM KIRI -->
-    <div class="column">
+    <!-- KOLOM KIRI (OTOMATIS TINGGI 100%) -->
+    <div class="column column-left">
       <!-- Item 1: Filosofi RemoteX -->
       <div class="accordion active">
         <div class="accordion-header">
@@ -181,19 +201,30 @@
           <span class="accordion-icon">▼</span>
         </div>
         <div class="accordion-content">
-          <p class="text-muted">Kami memiliki satu keyakinan sederhana:</p>
-          <div class="quote-box">"Everyone has an X."</div>
-          <p class="text-muted">X adalah kombinasi unik dari:</p>
-          
-          <div class="feature-list">
-            <ul>
-              <li>✨ Pengalaman & Skill</li>
-              <li>✨ Pengetahuan & Cara berpikir</li>
-              <li>✨ Problem solving & Kepribadian</li>
-            </ul>
+          <div>
+            <p class="text-muted">Kami memiliki satu keyakinan sederhana:</p>
+            <div class="quote-box">"Everyone has an X."</div>
+            <p class="text-muted">X adalah kombinasi unik dari:</p>
+            
+            <div class="feature-grid">
+              <div class="feature-list">
+                <ul>
+                  <li>✨ Pengalaman</li>
+                  <li>✨ Skill</li>
+                  <li>✨ Pengetahuan</li>
+                </ul>
+              </div>
+              <div class="feature-list">
+                <ul>
+                  <li>✨ Cara berpikir</li>
+                  <li>✨ Problem solving</li>
+                  <li>✨ Kepribadian</li>
+                </ul>
+              </div>
+            </div>
           </div>
 
-          <p class="text-muted">
+          <p class="text-muted" style="margin-top: 14px;">
             RemoteX membantu kamu menemukan X tersebut. Karena ketika kamu memahami nilai yang kamu miliki... <b>Dunia juga akan mulai melihatnya.</b>
           </p>
         </div>
@@ -218,37 +249,23 @@
       </div>
 
       <!-- Item 3: Cara Belajar di RemoteX -->
-      <div class="accordion">
+      <div class="accordion active">
         <div class="accordion-header">
           <span>🚀 Cara Belajar di RemoteX</span>
           <span class="accordion-icon">▼</span>
         </div>
         <div class="accordion-content">
-          <p class="text-muted">Kami ingin kamu menghasilkan sesuatu. Setiap minggu terdiri dari:</p>
+          <p class="text-muted">Kami tidak ingin kamu <b>hanya menonton materi</b>.</p>
+          <p class="text-muted">Kami ingin kamu <b>menghasilkan sesuatu</b>.</p>
+          <p class="text-muted" style="margin-bottom: 12px;">Karena itu setiap minggu akan selalu terdiri dari:</p>
 
-          <div class="step-list">
-            <div class="step-card">
-              <div class="step-icon">🧠</div>
-              <div>
-                <div class="step-title">1. Mindset</div>
-                <div class="step-desc">Mengubah cara berpikir</div>
-              </div>
-            </div>
-            <div class="step-card">
-              <div class="step-icon">🎯</div>
-              <div>
-                <div class="step-title">2. Strategy</div>
-                <div class="step-desc">Memahami framework</div>
-              </div>
-            </div>
-            <div class="step-card">
-              <div class="step-icon">🛠️</div>
-              <div>
-                <div class="step-title">3. Practice</div>
-                <div class="step-desc">Mengerjakan workshop</div>
-              </div>
-            </div>
-          </div>
+          <div class="flow-step"><b>Mindset</b> (<i>Mengubah cara berpikir</i>)</div>
+          <div class="flow-arrow">↓</div>
+          <div class="flow-step"><b>Strategy</b> (<i>Memahami framework</i>)</div>
+          <div class="flow-arrow">↓</div>
+          <div class="flow-step"><b>Practice</b> (<i>Mengerjakan workshop</i>)</div>
+          <div class="flow-arrow">↓</div>
+          <div class="flow-step"><b>Output</b> (<i>Menghasilkan aset nyata</i>)</div>
 
         </div>
       </div>
@@ -257,6 +274,13 @@
   </div>
 
   <script>
+    function updateHeights() {
+      document.querySelectorAll('.accordion.active').forEach(acc => {
+        const content = acc.querySelector('.accordion-content');
+        content.style.maxHeight = 'none';
+      });
+    }
+
     document.querySelectorAll('.accordion-header').forEach(header => {
       header.addEventListener('click', () => {
         const accordion = header.parentElement;
@@ -272,11 +296,8 @@
       });
     });
 
-    // Set height otomatis untuk accordion yang default terbuka
-    document.querySelectorAll('.accordion.active').forEach(acc => {
-      const content = acc.querySelector('.accordion-content');
-      content.style.maxHeight = content.scrollHeight + 'px';
-    });
+    // Run height adjustment on load
+    window.addEventListener('load', updateHeights);
   </script>
 </body>
 </html>

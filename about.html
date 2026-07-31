@@ -16,16 +16,39 @@
       font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
     }
 
-    html, body {
+    body {
       background-color: transparent;
       color: #37352f;
-      padding: 4px;
-      overflow: hidden; /* Mencegah scrollbar ganda di dalam iframe */
+      padding: 4px 8px;
     }
 
-    .grid-container {
+    /* Container dengan Custom Scrollbar Internal */
+    .scroll-wrapper {
       max-width: 1000px;
       margin: 0 auto;
+      max-height: 80vh; /* Maksimal tinggi 80% layar biar gak terlalu panjang */
+      overflow-y: auto;
+      padding-right: 6px;
+    }
+
+    /* Custom Scrollbar Cantik & Minimalis */
+    .scroll-wrapper::-webkit-scrollbar {
+      width: 6px;
+    }
+    .scroll-wrapper::-webkit-scrollbar-track {
+      background: #f1f5f9;
+      border-radius: 10px;
+    }
+    .scroll-wrapper::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 10px;
+    }
+    .scroll-wrapper::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+
+    /* Grid Layout 2 Kolom */
+    .grid-container {
       display: grid;
       grid-template-columns: 1fr;
       gap: 16px;
@@ -44,7 +67,7 @@
       gap: 16px;
     }
 
-    /* Accordion Styling */
+    /* Accordion Card Base */
     .accordion {
       background: #ffffff;
       border: 1px solid #e2e8f0;
@@ -85,7 +108,7 @@
     .accordion-content {
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.3s cubic-bezier(0, 1, 0, 1), padding 0.3s ease;
+      transition: max-height 0.35s ease-out, padding 0.35s ease;
       padding: 0 18px;
       background: #ffffff;
       border-top: 1px solid transparent;
@@ -94,11 +117,10 @@
     .accordion.active .accordion-content {
       padding: 14px 18px 20px 18px;
       border-top-color: #f1f5f9;
-      max-height: 2000px; /* Cukup besar untuk menampung konten */
-      transition: max-height 0.3s ease-in-out, padding 0.3s ease;
+      max-height: 2000px;
     }
 
-    /* Styling Content */
+    /* Styling Teks & Box */
     .text-muted {
       font-size: 0.9rem;
       color: #37352f;
@@ -218,255 +240,243 @@
 </head>
 <body>
 
-  <div class="grid-container" id="mainContainer">
-    
-    <!-- KOLOM KIRI -->
-    <div class="column">
+  <div class="scroll-wrapper">
+    <div class="grid-container">
       
-      <!-- 1. Filosofi RemoteX -->
-      <div class="accordion active">
-        <div class="accordion-header">
-          <span>💡 Filosofi RemoteX</span>
-          <span class="accordion-icon">▼</span>
-        </div>
-        <div class="accordion-content">
-          <p class="text-muted">Kami memiliki satu keyakinan sederhana:</p>
-          <div class="quote-box">"Everyone has an X."</div>
-          <p class="text-muted">X adalah kombinasi unik dari:</p>
-          
-          <div class="feature-grid">
-            <div class="feature-list">
-              <ul>
-                <li>✨ Pengalaman</li>
-                <li>✨ Skill</li>
-                <li>✨ Pengetahuan</li>
-              </ul>
+      <!-- KOLOM KIRI -->
+      <div class="column">
+        
+        <!-- 1. Filosofi RemoteX -->
+        <div class="accordion active">
+          <div class="accordion-header">
+            <span>💡 Filosofi RemoteX</span>
+            <span class="accordion-icon">▼</span>
+          </div>
+          <div class="accordion-content">
+            <p class="text-muted">Kami memiliki satu keyakinan sederhana:</p>
+            <div class="quote-box">"Everyone has an X."</div>
+            <p class="text-muted">X adalah kombinasi unik dari:</p>
+            
+            <div class="feature-grid">
+              <div class="feature-list">
+                <ul>
+                  <li>✨ Pengalaman</li>
+                  <li>✨ Skill</li>
+                  <li>✨ Pengetahuan</li>
+                </ul>
+              </div>
+              <div class="feature-list">
+                <ul>
+                  <li>✨ Cara berpikir</li>
+                  <li>✨ Problem solving</li>
+                  <li>✨ Kepribadian</li>
+                </ul>
+              </div>
             </div>
-            <div class="feature-list">
-              <ul>
-                <li>✨ Cara berpikir</li>
-                <li>✨ Problem solving</li>
-                <li>✨ Kepribadian</li>
-              </ul>
+
+            <p class="text-muted" style="margin-bottom: 0;">
+              RemoteX membantu kamu menemukan X tersebut. Karena ketika kamu memahami nilai yang kamu miliki... <b>Dunia juga akan mulai melihatnya.</b>
+            </p>
+          </div>
+        </div>
+
+        <!-- 2. Apa yang Akan Kamu Capai? -->
+        <div class="accordion active">
+          <div class="accordion-header">
+            <span>🎯 Apa yang Akan Kamu Capai?</span>
+            <span class="accordion-icon">▼</span>
+          </div>
+          <div class="accordion-content">
+            <p class="text-muted">Dalam 4 minggu, kami membantumu mengubah pengalaman kerja menjadi profil profesional global.</p>
+            <p class="text-muted"><b>Di akhir program, kamu akan memiliki:</b></p>
+            <ul class="custom-list">
+              <li>Career Positioning yang jelas</li>
+              <li>CV Internasional & LinkedIn Profesional</li>
+              <li>Portfolio & Upwork Profile</li>
+              <li>Proposal Template & Negotiation Strategy</li>
+              <li>Interview Preparation</li>
+              <li>Action Plan menuju pekerjaan remote/klien global</li>
+            </ul>
+
+            <div class="journey-box">
+              <div style="font-weight: 700; color: #831843; margin-bottom: 8px;">💡 Your Journey (4 Minggu)</div>
+              <div class="flow-step"><b>Week 0:</b> Know Yourself</div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step"><b>Week 1:</b> Discover Your Global Value</div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step"><b>Week 2:</b> Build Your Global Identity</div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step"><b>Week 3:</b> Sell Your Skills on Upwork</div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step"><b>Week 4:</b> Land Your First Client</div>
             </div>
           </div>
-
-          <p class="text-muted" style="margin-bottom: 0;">
-            RemoteX membantu kamu menemukan X tersebut. Karena ketika kamu memahami nilai yang kamu miliki... <b>Dunia juga akan mulai melihatnya.</b>
-          </p>
         </div>
-      </div>
 
-      <!-- 2. Apa yang Akan Kamu Capai? -->
-      <div class="accordion active">
-        <div class="accordion-header">
-          <span>🎯 Apa yang Akan Kamu Capai?</span>
-          <span class="accordion-icon">▼</span>
-        </div>
-        <div class="accordion-content">
-          <p class="text-muted">Dalam 4 minggu, kami membantumu mengubah pengalaman kerja menjadi profil profesional global.</p>
-          <p class="text-muted"><b>Di akhir program, kamu akan memiliki:</b></p>
-          <ul class="custom-list">
-            <li>Career Positioning yang jelas</li>
-            <li>CV Internasional & LinkedIn Profesional</li>
-            <li>Portfolio & Upwork Profile</li>
-            <li>Proposal Template & Negotiation Strategy</li>
-            <li>Interview Preparation</li>
-            <li>Action Plan menuju pekerjaan remote/klien global</li>
-          </ul>
-
-          <div class="journey-box">
-            <div style="font-weight: 700; color: #831843; margin-bottom: 8px;">💡 Your Journey (4 Minggu)</div>
-            <div class="flow-step"><b>Week 0:</b> Know Yourself</div>
-            <div class="flow-arrow">↓</div>
-            <div class="flow-step"><b>Week 1:</b> Discover Your Global Value</div>
-            <div class="flow-arrow">↓</div>
-            <div class="flow-step"><b>Week 2:</b> Build Your Global Identity</div>
-            <div class="flow-arrow">↓</div>
-            <div class="flow-step"><b>Week 3:</b> Sell Your Skills on Upwork</div>
-            <div class="flow-arrow">↓</div>
-            <div class="flow-step"><b>Week 4:</b> Land Your First Client</div>
+        <!-- 3. Harap Diperhatikan (Lisensi) -->
+        <div class="accordion active">
+          <div class="accordion-header">
+            <span>⚠️ HARAP DIPERHATIKAN (WAJIB DIBACA)</span>
+            <span class="accordion-icon">▼</span>
           </div>
-        </div>
-      </div>
+          <div class="accordion-content">
+            <div class="callout-warning">
+              <b>Web-book & Modul Bootcamp ini hanya untuk penggunaan pribadi.</b><br>
+              Kamu mendapat lisensi terbatas non-komersial untuk belajar dan mengembangkan skillmu.
+            </div>
 
-      <!-- 3. Harap Diperhatikan (Lisensi) -->
-      <div class="accordion active">
-        <div class="accordion-header">
-          <span>⚠️ HARAP DIPERHATIKAN (WAJIB DIBACA)</span>
-          <span class="accordion-icon">▼</span>
-        </div>
-        <div class="accordion-content">
-          <div class="callout-warning">
-            <b>Web-book & Modul Bootcamp ini hanya untuk penggunaan pribadi.</b><br>
-            Kamu mendapat lisensi terbatas non-komersial untuk belajar dan mengembangkan skillmu.
-          </div>
+            <div class="section-sub-head">✅ Kamu Boleh:</div>
+            <ul class="custom-list">
+              <li>Menyimpan modul untuk konsumsi pribadi.</li>
+              <li>Mencetak atau membaca modul untuk keperluan belajar.</li>
+              <li>Menggunakan materi untuk membangun portofolio pribadi.</li>
+            </ul>
 
-          <div class="section-sub-head">✅ Kamu Boleh:</div>
-          <ul class="custom-list">
-            <li>Menyimpan modul untuk konsumsi pribadi.</li>
-            <li>Mencetak atau membaca modul untuk keperluan belajar.</li>
-            <li>Menggunakan materi untuk membangun portofolio pribadi.</li>
-          </ul>
-
-          <div class="section-sub-head">❌ Kamu Tidak Boleh:</div>
-          <ul class="custom-list">
-            <li>Menjual kembali, membagikan, atau mendistribusikan modul ini.</li>
-            <li>Mengunggah modul ke platform publik (Google Drive, forum, marketplace, dll).</li>
-            <li>Mengklaim modul ini sebagai karya pribadi.</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- 4. Syarat Utama & Jadwal Kelas -->
-      <div class="accordion active">
-        <div class="accordion-header">
-          <span>📅 Syarat Utama & Jadwal Kelas</span>
-          <span class="accordion-icon">▼</span>
-        </div>
-        <div class="accordion-content">
-          <div class="section-sub-head">🌱 Syarat Utama:</div>
-          <p class="text-muted">Cukup komitmen belajar dan kemauan untuk tumbuh.</p>
-
-          <div class="section-sub-head">📌 Jadwal Live Webinar (19:00 - 21:00 WIB):</div>
-          <ul class="custom-list">
-            <li><b>Sabtu, 8 Agt 2026:</b> Week 1 Live</li>
-            <li><b>Sabtu, 15 Agt 2026:</b> Week 2 Live</li>
-            <li><b>Sabtu, 22 Agt 2026:</b> Week 3 Live</li>
-            <li><b>Sabtu, 29 Agt 2026:</b> Week 4 Live</li>
-          </ul>
-
-          <div class="section-sub-head">🎓 Feedback & E-Sertifikat:</div>
-          <ul class="custom-list">
-            <li>Feedback diberikan di Notion sesuai week berjalan.</li>
-            <li>E-Sertifikat dikeluarkan setelah menyelesaikan semua tugas (Week 0-4).</li>
-          </ul>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- KOLOM KANAN -->
-    <div class="column">
-      
-      <!-- 1. Kenapa RemoteX Dibuat? -->
-      <div class="accordion active">
-        <div class="accordion-header">
-          <span>❓ Kenapa RemoteX Dibuat?</span>
-          <span class="accordion-icon">▼</span>
-        </div>
-        <div class="accordion-content">
-          <div class="callout-box">
-            <div class="callout-quotes">"Aku cuma Admin." • "Aku cuma HR." • "Aku cuma CS."</div>
-            Setiap hari kami bertemu dengan profesional yang meragukan dirinya sendiri. Padahal mereka memiliki skill yang sedang dicari perusahaan global.<br><br>
-            <b>Masalahnya bukan tidak kompeten</b>, tapi belum tahu cara memposisikan diri. RemoteX hadir untuk membantu dunia melihat nilai yang sudah kamu miliki.
-          </div>
-        </div>
-      </div>
-
-      <!-- 2. Cara Belajar di RemoteX -->
-      <div class="accordion active">
-        <div class="accordion-header">
-          <span>🚀 Cara Belajar di RemoteX</span>
-          <span class="accordion-icon">▼</span>
-        </div>
-        <div class="accordion-content">
-          <p class="text-muted">Kami tidak ingin kamu <b>hanya menonton materi</b>.</p>
-          <p class="text-muted">Kami ingin kamu <b>menghasilkan sesuatu</b>.</p>
-          <p class="text-muted" style="margin-bottom: 12px;">Karena itu setiap minggu akan selalu terdiri dari:</p>
-
-          <div class="flow-step"><b>Mindset</b> (<i>Mengubah cara berpikir</i>)</div>
-          <div class="flow-arrow">↓</div>
-          <div class="flow-step"><b>Strategy</b> (<i>Memahami framework</i>)</div>
-          <div class="flow-arrow">↓</div>
-          <div class="flow-step"><b>Practice</b> (<i>Mengerjakan workshop</i>)</div>
-          <div class="flow-arrow">↓</div>
-          <div class="flow-step"><b>Output</b> (<i>Menghasilkan aset nyata</i>)</div>
-
-          <div class="ai-box">
-            <div style="font-weight: 700; color: #166534; margin-bottom: 6px;">🤖 Peran AI Kamu Selama Belajar:</div>
-            <ul class="custom-list" style="margin-bottom: 0;">
-              <li><b>CVMate:</b> build & maximize CV-mu</li>
-              <li><b>InterviewMate:</b> simulasi wawancara</li>
-              <li><b>LinkedIn Optimizer:</b> optimize profil LinkedIn</li>
+            <div class="section-sub-head">❌ Kamu Tidak Boleh:</div>
+            <ul class="custom-list">
+              <li>Menjual kembali, membagikan, atau mendistribusikan modul ini.</li>
+              <li>Mengunggah modul ke platform publik (Google Drive, forum, marketplace, dll).</li>
+              <li>Mengklaim modul ini sebagai karya pribadi.</li>
             </ul>
           </div>
         </div>
-      </div>
 
-      <!-- 3. Rules Belajar -->
-      <div class="accordion active">
-        <div class="accordion-header">
-          <span>🚨 RULES BELAJAR DI BOOTCAMP INI</span>
-          <span class="accordion-icon">▼</span>
-        </div>
-        <div class="accordion-content">
-          <div class="section-sub-head">1. Komitmen Waktu</div>
-          <p class="text-muted">Luangkan ±5–7 jam/minggu. Deadline tugas: Kamis, 23:59 WIB.</p>
+        <!-- 4. Syarat Utama & Jadwal Kelas -->
+        <div class="accordion active">
+          <div class="accordion-header">
+            <span>📅 Syarat Utama & Jadwal Kelas</span>
+            <span class="accordion-icon">▼</span>
+          </div>
+          <div class="accordion-content">
+            <div class="section-sub-head">🌱 Syarat Utama:</div>
+            <p class="text-muted">Cukup komitmen belajar dan kemauan untuk tumbuh.</p>
 
-          <div class="section-sub-head">2. Kedisiplinan Tugas</div>
-          <p class="text-muted">Terlambat submit tanpa konfirmasi mempengaruhi penilaian e-sertifikat.</p>
+            <div class="section-sub-head">📌 Jadwal Live Webinar (19:00 - 21:00 WIB):</div>
+            <ul class="custom-list">
+              <li><b>Sabtu, 8 Agt 2026:</b> Week 1 Live</li>
+              <li><b>Sabtu, 15 Agt 2026:</b> Week 2 Live</li>
+              <li><b>Sabtu, 22 Agt 2026:</b> Week 3 Live</li>
+              <li><b>Sabtu, 29 Agt 2026:</b> Week 4 Live</li>
+            </ul>
 
-          <div class="section-sub-head">3. Etika Belajar</div>
-          <p class="text-muted">Dilarang mencontek/plagiarisme. Jaga komunikasi sopan & positif di grup.</p>
-
-          <div class="section-sub-head">4. Kerahasiaan Modul</div>
-          <p class="text-muted">Modul hanya untuk penggunaan pribadi. Dilarang keras mendistribusikan.</p>
-
-          <div class="section-sub-head">5. Kehadiran & Partisipasi</div>
-          <p class="text-muted">Wajib hadir di Webinar Live & aktif bertanya/diskusi.</p>
-        </div>
-      </div>
-
-      <!-- 4. Konsekuensi Pelanggaran -->
-      <div class="accordion active">
-        <div class="accordion-header">
-          <span>🚨 Konsekuensi Pelanggaran</span>
-          <span class="accordion-icon">▼</span>
-        </div>
-        <div class="accordion-content">
-          <ul class="custom-list">
-            <li><b>Teguran 1x:</b> Jika tidak disiplin.</li>
-            <li><b>Teguran 2x:</b> Tidak mendapatkan e-sertifikat.</li>
-            <li><b>Teguran 3x:</b> Dikeluarkan dari bootcamp tanpa refund & blacklist.</li>
-            <li><b>Tindakan Hukum (UU Hak Cipta No. 28 Tahun 2014):</b>
-              <ul style="padding-left: 18px; margin-top: 4px;">
-                <li><i>Pasal 113 (2):</i> Distribusi ilegal → penjara max 4 tahun / denda max Rp1 miliar.</li>
-                <li><i>Pasal 113 (3):</i> Komersialisasi ilegal → penjara max 10 tahun / denda max Rp4 miliar.</li>
-              </ul>
-            </li>
-          </ul>
-          <div class="callout-box" style="margin-top: 10px;">
-            👉 <i>Dengan bergabung di bootcamp ini, kamu dianggap setuju & siap menaati aturan di atas.</i>
+            <div class="section-sub-head">🎓 Feedback & E-Sertifikat:</div>
+            <ul class="custom-list">
+              <li>Feedback diberikan di Notion sesuai week berjalan.</li>
+              <li>E-Sertifikat dikeluarkan setelah menyelesaikan semua tugas (Week 0-4).</li>
+            </ul>
           </div>
         </div>
+
+      </div>
+
+      <!-- KOLOM KANAN -->
+      <div class="column">
+        
+        <!-- 1. Kenapa RemoteX Dibuat? -->
+        <div class="accordion active">
+          <div class="accordion-header">
+            <span>❓ Kenapa RemoteX Dibuat?</span>
+            <span class="accordion-icon">▼</span>
+          </div>
+          <div class="accordion-content">
+            <div class="callout-box">
+              <div class="callout-quotes">"Aku cuma Admin." • "Aku cuma HR." • "Aku cuma CS."</div>
+              Setiap hari kami bertemu dengan profesional yang meragukan dirinya sendiri. Padahal mereka memiliki skill yang sedang dicari perusahaan global.<br><br>
+              <b>Masalahnya bukan tidak kompeten</b>, tapi belum tahu cara memposisikan diri. RemoteX hadir untuk membantu dunia melihat nilai yang sudah kamu miliki.
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Cara Belajar di RemoteX -->
+        <div class="accordion active">
+          <div class="accordion-header">
+            <span>🚀 Cara Belajar di RemoteX</span>
+            <span class="accordion-icon">▼</span>
+          </div>
+          <div class="accordion-content">
+            <p class="text-muted">Kami tidak ingin kamu <b>hanya menonton materi</b>.</p>
+            <p class="text-muted">Kami ingin kamu <b>menghasilkan sesuatu</b>.</p>
+            <p class="text-muted" style="margin-bottom: 12px;">Karena itu setiap minggu akan selalu terdiri dari:</p>
+
+            <div class="flow-step"><b>Mindset</b> (<i>Mengubah cara berpikir</i>)</div>
+            <div class="flow-arrow">↓</div>
+            <div class="flow-step"><b>Strategy</b> (<i>Memahami framework</i>)</div>
+            <div class="flow-arrow">↓</div>
+            <div class="flow-step"><b>Practice</b> (<i>Mengerjakan workshop</i>)</div>
+            <div class="flow-arrow">↓</div>
+            <div class="flow-step"><b>Output</b> (<i>Menghasilkan aset nyata</i>)</div>
+
+            <div class="ai-box">
+              <div style="font-weight: 700; color: #166534; margin-bottom: 6px;">🤖 Peran AI Kamu Selama Belajar:</div>
+              <ul class="custom-list" style="margin-bottom: 0;">
+                <li><b>CVMate:</b> build & maximize CV-mu</li>
+                <li><b>InterviewMate:</b> simulasi wawancara</li>
+                <li><b>LinkedIn Optimizer:</b> optimize profil LinkedIn</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Rules Belajar -->
+        <div class="accordion active">
+          <div class="accordion-header">
+            <span>🚨 RULES BELAJAR DI BOOTCAMP INI</span>
+            <span class="accordion-icon">▼</span>
+          </div>
+          <div class="accordion-content">
+            <div class="section-sub-head">1. Komitmen Waktu</div>
+            <p class="text-muted">Luangkan ±5–7 jam/minggu. Deadline tugas: Kamis, 23:59 WIB.</p>
+
+            <div class="section-sub-head">2. Kedisiplinan Tugas</div>
+            <p class="text-muted">Terlambat submit tanpa konfirmasi mempengaruhi penilaian e-sertifikat.</p>
+
+            <div class="section-sub-head">3. Etika Belajar</div>
+            <p class="text-muted">Dilarang mencontek/plagiarisme. Jaga komunikasi sopan & positif di grup.</p>
+
+            <div class="section-sub-head">4. Kerahasiaan Modul</div>
+            <p class="text-muted">Modul hanya untuk penggunaan pribadi. Dilarang keras mendistribusikan.</p>
+
+            <div class="section-sub-head">5. Kehadiran & Partisipasi</div>
+            <p class="text-muted">Wajib hadir di Webinar Live & aktif bertanya/diskusi.</p>
+          </div>
+        </div>
+
+        <!-- 4. Konsekuensi Pelanggaran -->
+        <div class="accordion active">
+          <div class="accordion-header">
+            <span>🚨 Konsekuensi Pelanggaran</span>
+            <span class="accordion-icon">▼</span>
+          </div>
+          <div class="accordion-content">
+            <ul class="custom-list">
+              <li><b>Teguran 1x:</b> Jika tidak disiplin.</li>
+              <li><b>Teguran 2x:</b> Tidak mendapatkan e-sertifikat.</li>
+              <li><b>Teguran 3x:</b> Dikeluarkan dari bootcamp tanpa refund & blacklist.</li>
+              <li><b>Tindakan Hukum (UU Hak Cipta No. 28 Tahun 2014):</b>
+                <ul style="padding-left: 18px; margin-top: 4px;">
+                  <li><i>Pasal 113 (2):</i> Distribusi ilegal → penjara max 4 tahun / denda max Rp1 miliar.</li>
+                  <li><i>Pasal 113 (3):</i> Komersialisasi ilegal → penjara max 10 tahun / denda max Rp4 miliar.</li>
+                </ul>
+              </li>
+            </ul>
+            <div class="callout-box" style="margin-top: 10px;">
+              👉 <i>Dengan bergabung di bootcamp ini, kamu dianggap setuju & siap menaati aturan di atas.</i>
+            </div>
+          </div>
+        </div>
+
       </div>
 
     </div>
-
   </div>
 
   <script>
-    // Toggle Accordion Click
     document.querySelectorAll('.accordion-header').forEach(header => {
       header.addEventListener('click', () => {
         const accordion = header.parentElement;
         accordion.classList.toggle('active');
-        notifyHeightChange();
       });
     });
-
-    // Kirim sinyal tinggi konten ke iframe parent
-    function notifyHeightChange() {
-      setTimeout(() => {
-        const height = document.documentElement.scrollHeight || document.body.scrollHeight;
-        window.parent.postMessage({ frameHeight: height }, '*');
-      }, 300); // delay sejenak agar animasi accordion selesai
-    }
-
-    // Auto trigger pas awal load
-    window.addEventListener('load', notifyHeightChange);
-    window.addEventListener('resize', notifyHeightChange);
   </script>
 </body>
 </html>

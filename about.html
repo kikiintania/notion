@@ -16,13 +16,13 @@
       font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
     }
 
-    body {
+    html, body {
       background-color: transparent;
       color: #37352f;
-      padding: 8px;
+      padding: 4px;
+      overflow: hidden; /* Mencegah scrollbar ganda di dalam iframe */
     }
 
-    /* Single Grid Container Rapat & Balanced */
     .grid-container {
       max-width: 1000px;
       margin: 0 auto;
@@ -44,7 +44,7 @@
       gap: 16px;
     }
 
-    /* Accordion Card Base */
+    /* Accordion Styling */
     .accordion {
       background: #ffffff;
       border: 1px solid #e2e8f0;
@@ -85,7 +85,7 @@
     .accordion-content {
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.35s ease-out, padding 0.35s ease;
+      transition: max-height 0.3s cubic-bezier(0, 1, 0, 1), padding 0.3s ease;
       padding: 0 18px;
       background: #ffffff;
       border-top: 1px solid transparent;
@@ -94,9 +94,11 @@
     .accordion.active .accordion-content {
       padding: 14px 18px 20px 18px;
       border-top-color: #f1f5f9;
+      max-height: 2000px; /* Cukup besar untuk menampung konten */
+      transition: max-height 0.3s ease-in-out, padding 0.3s ease;
     }
 
-    /* Styling Teks & Box */
+    /* Styling Content */
     .text-muted {
       font-size: 0.9rem;
       color: #37352f;
@@ -175,7 +177,6 @@
       margin-top: 14px;
     }
 
-    /* List Custom Clean */
     .custom-list {
       padding-left: 20px;
       font-size: 0.88rem;
@@ -184,11 +185,8 @@
       margin-bottom: 8px;
     }
 
-    .custom-list li {
-      margin-bottom: 4px;
-    }
+    .custom-list li { margin-bottom: 4px; }
 
-    /* Step Timeline Flow */
     .flow-step {
       font-size: 0.9rem;
       font-style: italic;
@@ -220,9 +218,9 @@
 </head>
 <body>
 
-  <div class="grid-container">
+  <div class="grid-container" id="mainContainer">
     
-    <!-- KOLOM KIRI (4 CARD PAS) -->
+    <!-- KOLOM KIRI -->
     <div class="column">
       
       <!-- 1. Filosofi RemoteX -->
@@ -348,7 +346,7 @@
 
     </div>
 
-    <!-- KOLOM KANAN (4 CARD PAS) -->
+    <!-- KOLOM KANAN -->
     <div class="column">
       
       <!-- 1. Kenapa RemoteX Dibuat? -->
@@ -366,7 +364,7 @@
         </div>
       </div>
 
-      <!-- 2. Cara Belajar di RemoteX (Include AI Co-Mentor) -->
+      <!-- 2. Cara Belajar di RemoteX -->
       <div class="accordion active">
         <div class="accordion-header">
           <span>🚀 Cara Belajar di RemoteX</span>
@@ -449,25 +447,26 @@
   </div>
 
   <script>
+    // Toggle Accordion Click
     document.querySelectorAll('.accordion-header').forEach(header => {
       header.addEventListener('click', () => {
         const accordion = header.parentElement;
-        const content = accordion.querySelector('.accordion-content');
-        
         accordion.classList.toggle('active');
-        
-        if (accordion.classList.contains('active')) {
-          content.style.maxHeight = content.scrollHeight + 'px';
-        } else {
-          content.style.maxHeight = '0';
-        }
+        notifyHeightChange();
       });
     });
 
-    document.querySelectorAll('.accordion.active').forEach(acc => {
-      const content = acc.querySelector('.accordion-content');
-      content.style.maxHeight = content.scrollHeight + 'px';
-    });
+    // Kirim sinyal tinggi konten ke iframe parent
+    function notifyHeightChange() {
+      setTimeout(() => {
+        const height = document.documentElement.scrollHeight || document.body.scrollHeight;
+        window.parent.postMessage({ frameHeight: height }, '*');
+      }, 300); // delay sejenak agar animasi accordion selesai
+    }
+
+    // Auto trigger pas awal load
+    window.addEventListener('load', notifyHeightChange);
+    window.addEventListener('resize', notifyHeightChange);
   </script>
 </body>
 </html>

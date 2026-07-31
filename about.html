@@ -22,16 +22,14 @@
       padding: 4px 8px;
     }
 
-    /* Container dengan Custom Scrollbar Internal */
     .scroll-wrapper {
       max-width: 1000px;
       margin: 0 auto;
-      max-height: 80vh; /* Maksimal tinggi 80% layar biar gak terlalu panjang */
+      max-height: 85vh;
       overflow-y: auto;
       padding-right: 6px;
     }
 
-    /* Custom Scrollbar Cantik & Minimalis */
     .scroll-wrapper::-webkit-scrollbar {
       width: 6px;
     }
@@ -43,11 +41,7 @@
       background: #cbd5e1;
       border-radius: 10px;
     }
-    .scroll-wrapper::-webkit-scrollbar-thumb:hover {
-      background: #94a3b8;
-    }
 
-    /* Grid Layout 2 Kolom */
     .grid-container {
       display: grid;
       grid-template-columns: 1fr;
@@ -67,7 +61,7 @@
       gap: 16px;
     }
 
-    /* Accordion Card Base */
+    /* Accordion Card Styling */
     .accordion {
       background: #ffffff;
       border: 1px solid #e2e8f0;
@@ -120,7 +114,7 @@
       max-height: 2000px;
     }
 
-    /* Styling Teks & Box */
+    /* Inner Content */
     .text-muted {
       font-size: 0.9rem;
       color: #37352f;
@@ -243,11 +237,11 @@
   <div class="scroll-wrapper">
     <div class="grid-container">
       
-      <!-- KOLOM KIRI -->
+      <!-- KOLOM KIRI (4 BAR) -->
       <div class="column">
         
         <!-- 1. Filosofi RemoteX -->
-        <div class="accordion active">
+        <div class="accordion">
           <div class="accordion-header">
             <span>💡 Filosofi RemoteX</span>
             <span class="accordion-icon">▼</span>
@@ -281,7 +275,7 @@
         </div>
 
         <!-- 2. Apa yang Akan Kamu Capai? -->
-        <div class="accordion active">
+        <div class="accordion">
           <div class="accordion-header">
             <span>🎯 Apa yang Akan Kamu Capai?</span>
             <span class="accordion-icon">▼</span>
@@ -313,8 +307,8 @@
           </div>
         </div>
 
-        <!-- 3. Harap Diperhatikan (Lisensi) -->
-        <div class="accordion active">
+        <!-- 3. Harap Diperhatikan -->
+        <div class="accordion">
           <div class="accordion-header">
             <span>⚠️ HARAP DIPERHATIKAN (WAJIB DIBACA)</span>
             <span class="accordion-icon">▼</span>
@@ -342,7 +336,7 @@
         </div>
 
         <!-- 4. Syarat Utama & Jadwal Kelas -->
-        <div class="accordion active">
+        <div class="accordion">
           <div class="accordion-header">
             <span>📅 Syarat Utama & Jadwal Kelas</span>
             <span class="accordion-icon">▼</span>
@@ -369,11 +363,11 @@
 
       </div>
 
-      <!-- KOLOM KANAN -->
+      <!-- KOLOM KANAN (4 BAR) -->
       <div class="column">
         
         <!-- 1. Kenapa RemoteX Dibuat? -->
-        <div class="accordion active">
+        <div class="accordion">
           <div class="accordion-header">
             <span>❓ Kenapa RemoteX Dibuat?</span>
             <span class="accordion-icon">▼</span>
@@ -388,7 +382,7 @@
         </div>
 
         <!-- 2. Cara Belajar di RemoteX -->
-        <div class="accordion active">
+        <div class="accordion">
           <div class="accordion-header">
             <span>🚀 Cara Belajar di RemoteX</span>
             <span class="accordion-icon">▼</span>
@@ -418,7 +412,7 @@
         </div>
 
         <!-- 3. Rules Belajar -->
-        <div class="accordion active">
+        <div class="accordion">
           <div class="accordion-header">
             <span>🚨 RULES BELAJAR DI BOOTCAMP INI</span>
             <span class="accordion-icon">▼</span>
@@ -442,7 +436,7 @@
         </div>
 
         <!-- 4. Konsekuensi Pelanggaran -->
-        <div class="accordion active">
+        <div class="accordion">
           <div class="accordion-header">
             <span>🚨 Konsekuensi Pelanggaran</span>
             <span class="accordion-icon">▼</span>

@@ -53,14 +53,26 @@
       margin-bottom: 20px;
     }
 
-    .highlight-badge {
+    /* Badge Clickable Styling */
+    .highlight-badge-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
       background: #eff6ff;
       border: 1px solid #bfdbfe;
       color: #1d4ed8;
       font-weight: 700;
-      padding: 2px 8px;
+      padding: 3px 10px;
       border-radius: 6px;
       font-size: 0.88rem;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .highlight-badge-link:hover {
+      background: #dbeafe;
+      border-color: #93c5fd;
+      transform: translateY(-1px);
     }
 
     /* Start Box Notice */
@@ -72,7 +84,7 @@
       margin-bottom: 16px;
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 8px;
     }
 
     .start-notice-title {
@@ -88,6 +100,27 @@
       font-size: 0.88rem;
       color: #15803d;
       line-height: 1.5;
+    }
+
+    /* Tombol Aksi Langsung ke Week 0 */
+    .btn-launchpad {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #166534;
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 0.88rem;
+      padding: 8px 16px;
+      border-radius: 8px;
+      text-decoration: none;
+      width: fit-content;
+      margin-top: 6px;
+      transition: background 0.2s ease;
+    }
+
+    .btn-launchpad:hover {
+      background: #15803d;
     }
 
     .next-step-hint {
@@ -110,7 +143,12 @@
     </div>
     
     <p class="banner-subtitle">
-      Setiap minggu akan fokus ke satu keterampilan utama. Kamu bisa langsung mulai dari <span class="highlight-badge">Week 0: Asesmen & Onboarding</span> untuk mengetahui profil dan peta skill awalmu.
+      Setiap minggu akan fokus ke satu keterampilan utama. Kamu bisa langsung mulai dari 
+      <!-- LINK CLICKABLE BADGE (Ganti URL di bawah) -->
+      <a href="PASTE_LINK_NOTION_WEEK_0_DI_SINI" target="_top" class="highlight-badge-link">
+        Week 0: Asesmen & Onboarding ↗
+      </a> 
+      untuk mengetahui profil dan peta skill awalmu.
     </p>
 
     <!-- Callout Box Onboarding -->
@@ -119,12 +157,17 @@
         🚀 Langkah Pertama: Task Week 0 / Pre-Bootcamp
       </div>
       <div class="start-notice-desc">
-        Silakan klik dan selesaikan modul <b>Week 0 - Launchpad</b> di bawah ini sebelum melanjutkan ke materi mingguan berikutnya!
+        Silakan klik dan selesaikan modul <b>Week 0 – Launchpad</b> di bawah ini sebelum melanjutkan ke materi minggu berikutnya!
       </div>
+      
+      <!-- TOMBOL CLICKABLE TAMBAHAN -->
+      <a href="PASTE_LINK_NOTION_WEEK_0_DI_SINI" target="_top" class="btn-launchpad">
+        📄 Buka Modul Week 0 - Launchpad
+      </a>
     </div>
 
     <div class="next-step-hint">
-      👇 Selesaikan Week 0 di bawah ini, lalu kamu bisa langsung lanjut belajar materi utama:
+      👇 Selesaikan Week 0 di atas, lalu kamu bisa langsung lanjut belajar materi utama:
     </div>
   </div>
 

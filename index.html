@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RemoteX Hero Section</title>
-  <!-- Import Google Fonts Modern -->
+  <title>RemoteX Hero Header</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
   
   <style>
     * {
@@ -23,79 +22,150 @@
       padding: 8px;
     }
 
-    /* Grid Layout 2 Kolom */
-    .hero-container {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 16px;
+    .wrapper {
       max-width: 1000px;
       margin: 0 auto;
     }
 
+    .hero-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
     @media (min-width: 680px) {
       .hero-container {
-        grid-template-columns: 290px 1fr;
+        grid-template-columns: 310px 1fr;
       }
     }
 
     /* Base Card Styling */
     .card {
       background: #ffffff;
-      border: 1px solid #eeeeed;
-      border-radius: 16px;
+      border: 1px solid #e2e8f0;
+      border-radius: 18px;
       padding: 24px;
-      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.025);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.025);
     }
 
-    /* Widget Jam / Greeting Card */
+    /* 1. TIME CARD (AESTHETIC & MODERN) */
     .time-card {
+      position: relative;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
       text-align: center;
-      background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-      border: 1px solid #e2e8f0;
+      /* Modern Gradient Background */
+      background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #312e81 100%);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      overflow: hidden;
+      padding: 28px 20px;
+      min-height: 220px;
+    }
+
+    /* Decorative Glow Effects */
+    .time-card::before {
+      content: '';
+      position: absolute;
+      top: -40px;
+      left: -40px;
+      width: 120px;
+      height: 120px;
+      background: rgba(99, 102, 241, 0.35);
+      filter: blur(40px);
+      border-radius: 50%;
+    }
+
+    .time-card::after {
+      content: '';
+      position: absolute;
+      bottom: -40px;
+      right: -40px;
+      width: 120px;
+      height: 120px;
+      background: rgba(168, 85, 247, 0.3);
+      filter: blur(40px);
+      border-radius: 50%;
+    }
+
+    /* Live Badge Indicator */
+    .live-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #a7f3d0;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      z-index: 2;
+    }
+
+    .pulse-dot {
+      width: 6px;
+      height: 6px;
+      background-color: #34d399;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #34d399;
+      animation: pulse 1.8s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.7); }
+      70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(52, 211, 153, 0); }
+      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(52, 211, 153, 0); }
     }
 
     .greeting {
-      font-size: 0.9rem;
-      font-weight: 600;
-      letter-spacing: 0.3px;
-      margin-bottom: 2px;
-      color: #64748b;
-      text-transform: lowercase;
-    }
-
-    .user-name {
-      font-size: 1.3rem;
+      font-size: 1.15rem;
       font-weight: 700;
-      color: #0f172a;
-      margin-bottom: 12px;
-      letter-spacing: -0.3px;
+      color: #f8fafc;
+      letter-spacing: -0.2px;
+      z-index: 2;
     }
 
     .date {
       font-size: 0.75rem;
       font-weight: 600;
-      color: #94a3b8;
-      letter-spacing: 1px;
-      margin-bottom: 10px;
+      color: #c7d2fe;
+      letter-spacing: 1.2px;
+      margin-top: 2px;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      z-index: 2;
+    }
+
+    /* Glassmorphism Digital Clock */
+    .clock-box {
+      z-index: 2;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 12px;
+      padding: 10px 14px;
+      box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
     }
 
     .clock {
       font-family: 'Space Grotesk', monospace;
-      font-size: 1.55rem;
+      font-size: 1.45rem;
       font-weight: 700;
-      color: #0f172a;
-      background: #f1f5f9;
-      padding: 8px 16px;
-      border-radius: 10px;
-      border: 1px solid #e2e8f0;
-      letter-spacing: 1px;
+      color: #ffffff;
+      letter-spacing: 1.5px;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     }
 
-    /* Welcome Message Card */
+    /* 2. WELCOME CARD */
     .welcome-card {
       display: flex;
       flex-direction: column;
@@ -103,7 +173,7 @@
     }
 
     .welcome-text {
-      font-size: 0.93rem;
+      font-size: 0.92rem;
       line-height: 1.65;
       color: #334155;
     }
@@ -124,26 +194,40 @@
 </head>
 <body>
 
-  <div class="hero-container">
-    <!-- Kolom Kiri: Widget Jam Aesthetic -->
-    <div class="card time-card">
-      <div class="greeting" id="greeting">Good morning,</div>
-      <div class="date" id="date">JUMAT, 31 JULI 2026</div>
-      <div class="clock" id="clock">06 : 20 : 00 AM</div>
-    </div>
+  <div class="wrapper">
+    <div class="hero-container">
+      
+      <!-- LEFT: AESTHETIC TIME WIDGET -->
+      <div class="card time-card">
+        <div class="live-badge">
+          <span class="pulse-dot"></span>
+          Live Time
+        </div>
 
-    <!-- Kolom Kanan: Message Asli Kamu -->
-    <div class="card welcome-card">
-      <div class="welcome-text">
-        <p>Halo dan selamat datang di <span class="highlight-brand">RemoteX</span>.</p>
-        <p>Pertama-tama, selamat karena kamu sudah mengambil langkah yang mungkin akan mengubah arah kariermu.</p>
-        <p>Banyak orang berpikir bahwa untuk bekerja secara remote atau mendapatkan klien global, mereka harus belajar skill baru dari nol.</p>
-        <p>Kami percaya sebaliknya.</p>
-        <p>Kami percaya bahwa <b>kamu sudah memiliki sesuatu yang berharga.</b></p>
-        <p>Pengalamanmu.<br>Skill-mu.<br>Cara berpikirmu.<br>Cara menyelesaikan masalah.<br>Semuanya memiliki nilai.</p>
-        <p>Yang belum kamu miliki hanyalah strategi untuk mengubahnya menjadi peluang global.</p>
-        <p><b>Itulah alasan RemoteX hadir.</b></p>
+        <div>
+          <div class="greeting" id="greeting">good morning, 👋</div>
+          <div class="date" id="date">FRIDAY, 31 JULY 2026</div>
+        </div>
+
+        <div class="clock-box">
+          <div class="clock" id="clock">07 : 33 : 09 AM</div>
+        </div>
       </div>
+
+      <!-- RIGHT: WELCOME TEXT -->
+      <div class="card welcome-card">
+        <div class="welcome-text">
+          <p>Halo dan selamat datang di <span class="highlight-brand">RemoteX</span>.</p>
+          <p>Pertama-tama, selamat karena kamu sudah mengambil langkah yang mungkin akan mengubah arah kariermu.</p>
+          <p>Banyak orang berpikir bahwa untuk bekerja secara remote atau mendapatkan klien global, mereka harus belajar skill baru dari nol.</p>
+          <p>Kami percaya sebaliknya.</p>
+          <p>Kami percaya bahwa <b>kamu sudah memiliki sesuatu yang berharga.</b></p>
+          <p>Pengalamanmu.<br>Skill-mu.<br>Cara berpikirmu.<br>Cara menyelesaikan masalah.<br>Semuanya memiliki nilai.</p>
+          <p>Yang belum kamu miliki hanyalah strategi untuk mengubahnya menjadi peluang global.</p>
+          <p><b>Itulah alasan RemoteX hadir.</b></p>
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -156,11 +240,10 @@
       const seconds = String(now.getSeconds()).padStart(2, '0');
       const ampm = hours >= 12 ? 'PM' : 'AM';
       
-      // Dynamic Greeting berdasarkan Waktu
-      let greetingText = 'Good Morning,';
-      if (hours >= 12 && hours < 17) greetingText = 'Good Afternoon,';
-      else if (hours >= 17 && hours < 21) greetingText = 'Good Evening,';
-      else if (hours >= 21 || hours < 4) greetingText = 'Good Night,';
+      let greetingText = 'good morning, 👋';
+      if (hours >= 12 && hours < 17) greetingText = 'good afternoon, 👋';
+      else if (hours >= 17 && hours < 21) greetingText = 'good evening, 👋';
+      else if (hours >= 21 || hours < 4) greetingText = 'good night, 👋';
 
       hours = hours % 12;
       hours = hours ? hours : 12;
@@ -169,8 +252,9 @@
       document.getElementById('greeting').textContent = greetingText;
       document.getElementById('clock').textContent = `${hoursStr} : ${minutes} : ${seconds} ${ampm}`;
 
+      // Date in English (en-US)
       const options = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
-      const dateStr = now.toLocaleDateString('id-ID', options).toUpperCase();
+      const dateStr = now.toLocaleDateString('en-US', options).toUpperCase();
       document.getElementById('date').textContent = dateStr;
     }
 
